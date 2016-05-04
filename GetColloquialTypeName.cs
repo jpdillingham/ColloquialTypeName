@@ -8,9 +8,3 @@ public static string GetColloquialTypeName(Type type)
 {
     return (!type.IsGenericType ? type.Name : type.Name.Split('`')[0] + "<" + String.Join(", ", type.GetGenericArguments().Select(a => GetColloquialTypeName(a))) + ">");
 }
-
-// as an extension method
-public static string ToColloquialString(this Type type)
-{
-    return (!type.IsGenericType ? type.Name : type.Name.Split('`')[0] + "<" + String.Join(", ", type.GetGenericArguments().Select(a => a.ToColloquialString())) + ">");
-}
